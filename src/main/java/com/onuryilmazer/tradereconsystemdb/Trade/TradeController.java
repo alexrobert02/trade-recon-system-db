@@ -1,8 +1,10 @@
 package com.onuryilmazer.tradereconsystemdb.Trade;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -20,7 +22,8 @@ public class TradeController {
 
     @GetMapping("/{id}")
     public Trade getTradeById(@PathVariable int id) {
-        return tradeService.getTradeById(id).orElseThrow();
+        return tradeService.getTradeById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Trade not found"));
     }
 
     @PostMapping
