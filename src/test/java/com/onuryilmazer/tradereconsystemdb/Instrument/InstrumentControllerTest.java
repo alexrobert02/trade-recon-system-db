@@ -33,7 +33,7 @@ class InstrumentControllerTest {
     private MockMvc mockMvc;
 
     @Mock
-    private com.onuryilmazer.tradereconsystemdb.service.InstrumentService instrumentService;
+    private InstrumentService instrumentService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -146,7 +146,5 @@ class InstrumentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("5"));
     }
-
-    // Poți adăuga la fel și pentru celelalte metode dacă vrei 100% acoperire
 }
 

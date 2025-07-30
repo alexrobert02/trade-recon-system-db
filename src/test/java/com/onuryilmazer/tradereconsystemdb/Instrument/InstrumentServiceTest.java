@@ -20,10 +20,10 @@ import static org.mockito.Mockito.when;
 class InstrumentServiceTest {
 
     @Mock
-    private com.onuryilmazer.tradereconsystemdb.repository.InstrumentRepository instrumentRepository;
+    private InstrumentRepository instrumentRepository;
 
     @InjectMocks
-    private com.onuryilmazer.tradereconsystemdb.service.InstrumentService instrumentService;
+    private InstrumentService instrumentService;
 
     private Instrument sampleInstrument;
 
