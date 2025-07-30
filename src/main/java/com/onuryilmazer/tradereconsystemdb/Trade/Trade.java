@@ -2,7 +2,6 @@ package com.onuryilmazer.tradereconsystemdb.Trade;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -23,7 +22,7 @@ public class Trade {
 
 
     @Column(name = "price", nullable = false, precision = 19, scale = 2)
-    private BigDecimal price;
+    private Double price;
 
 
     @Column(name = "quantity", nullable = false)
@@ -40,7 +39,7 @@ public class Trade {
 
     public Trade() {}
 
-    public Trade(String tradeId, String instrument, BigDecimal price,
+    public Trade(String tradeId, String instrument, Double price,
                  Integer quantity, String sourceSystem, LocalDate tradeDate) {
         this.tradeId = tradeId;
         this.instrument = instrument;
@@ -59,8 +58,8 @@ public class Trade {
     public String getInstrument() { return instrument; }
     public void setInstrument(String instrument) { this.instrument = instrument; }
 
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
+    public double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
 
     public Integer getQuantity() { return quantity; }
     public void setQuantity(Integer quantity) { this.quantity = quantity; }
