@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = ReconciliationController.class)
-@WithMockUser
+@WithMockUser(roles = "ADMIN")
 @DisplayName("ReconciliationController Tests")
 class ReconciliationControllerTest {
     @Autowired

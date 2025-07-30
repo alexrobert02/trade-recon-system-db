@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -26,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @SpringBootTest
-@WithMockUser
+@WithMockUser(roles = "ADMIN")
 class InstrumentControllerTest {
 
     @Autowired
@@ -63,7 +64,8 @@ class InstrumentControllerTest {
     void getInstrumentById_notFound() throws Exception {
         when(instrumentService.getInstrumentById(1L)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/api/instruments/1"))
+        mockMvc.perform(get("/api/instruments/1")
+                        .with(csrf()))
                 .andExpect(status().isNotFound());
     }
 
@@ -77,6 +79,7 @@ class InstrumentControllerTest {
         when(instrumentService.saveInstrument(any())).thenReturn(sampleInstrument);
 
         mockMvc.perform(post("/api/instruments")
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(toCreate)))
                 .andExpect(status().isCreated())
@@ -91,6 +94,7 @@ class InstrumentControllerTest {
         when(instrumentService.saveInstrument(any())).thenThrow(new RuntimeException("already exists"));
 
         mockMvc.perform(post("/api/instruments")
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(toCreate)))
                 .andExpect(status().isConflict())
@@ -107,6 +111,7 @@ class InstrumentControllerTest {
         when(instrumentService.updateInstrument(eq(1L), any())).thenReturn(updated);
 
         mockMvc.perform(put("/api/instruments/1")
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(updated)))
                 .andExpect(status().isOk())
@@ -117,7 +122,8 @@ class InstrumentControllerTest {
     void deleteInstrument_success() throws Exception {
         doNothing().when(instrumentService).deleteInstrument(1L);
 
-        mockMvc.perform(delete("/api/instruments/1"))
+        mockMvc.perform(delete("/api/instruments/1")
+                        .with(csrf()))
                 .andExpect(status().isNoContent());
     }
 
@@ -125,7 +131,8 @@ class InstrumentControllerTest {
     void deleteInstrument_notFound() throws Exception {
         doThrow(new RuntimeException("not found")).when(instrumentService).deleteInstrument(1L);
 
-        mockMvc.perform(delete("/api/instruments/1"))
+        mockMvc.perform(delete("/api/instruments/1")
+                        .with(csrf()))
                 .andExpect(status().isNotFound());
     }
 
