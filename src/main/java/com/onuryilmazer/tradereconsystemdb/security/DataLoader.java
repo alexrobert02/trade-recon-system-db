@@ -2,11 +2,13 @@ package com.onuryilmazer.tradereconsystemdb.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @Component
+@Profile("h2")
 public class DataLoader implements CommandLineRunner {
 
     private UserRepository userRepository;

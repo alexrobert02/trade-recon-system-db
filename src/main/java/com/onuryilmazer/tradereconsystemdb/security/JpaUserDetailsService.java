@@ -1,6 +1,7 @@
 package com.onuryilmazer.tradereconsystemdb.security;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 
 @Service
 @RequiredArgsConstructor
+@Profile("h2")
 public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
