@@ -1,6 +1,6 @@
 CREATE TABLE trade
 (
-    id            SERIAL PRIMARY KEY,
+    id            BIGSERIAL PRIMARY KEY,
     trade_id      VARCHAR(255),
     instrument    VARCHAR(255),
     price         NUMERIC,
@@ -11,7 +11,7 @@ CREATE TABLE trade
 
 CREATE TABLE instrument
 (
-    id     SERIAL PRIMARY KEY,
+    id     BIGSERIAL PRIMARY KEY,
     symbol VARCHAR(50) NOT NULL,
     name   VARCHAR(100),
     isin   VARCHAR(20)
@@ -19,7 +19,7 @@ CREATE TABLE instrument
 
 CREATE TABLE reconciliation_run
 (
-    id              SERIAL PRIMARY KEY,
+    id              BIGSERIAL PRIMARY KEY,
     run_date        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     status          VARCHAR(20),
     matched_count   INTEGER,
@@ -29,11 +29,11 @@ CREATE TABLE reconciliation_run
 
 CREATE TABLE reconciliation_difference
 (
-    id                    SERIAL PRIMARY KEY,
+    id                    BIGSERIAL PRIMARY KEY,
     trade_id              VARCHAR(255) NOT NULL,
     field_name            VARCHAR(100),
     value_system_a        VARCHAR(255),
     value_system_b        VARCHAR(255),
-    reconciliation_run_id INTEGER REFERENCES reconciliation_run (id) ON DELETE CASCADE
+    reconciliation_run_id BIGINT REFERENCES reconciliation_run (id) ON DELETE CASCADE
 );
 
