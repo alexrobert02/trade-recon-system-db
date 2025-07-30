@@ -29,10 +29,10 @@ public class SecurityJpaConfig {
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/webjars/**", "/resources/**", "/h2-console/**").permitAll()
+                        //.requestMatchers("/webjars/**", "/resources/**", "/h2-console/**").permitAll()
                         .requestMatchers("/demo/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/demo/guest/**").hasRole("GUEST")
-                        .anyRequest().authenticated()
+                        //.requestMatchers("/demo/guest/**").hasRole("GUEST")
+                        .anyRequest().permitAll()
                 )
                 .userDetailsService(userDetailsService)
                 .formLogin(Customizer.withDefaults())
