@@ -3,7 +3,7 @@ CREATE TABLE trade
     id            BIGSERIAL PRIMARY KEY,
     trade_id      VARCHAR(255),
     instrument    VARCHAR(255),
-    price         DOUBLE PRECISION, --WE KNOW ITS NOT OK TO USE FLOATS FOR MONEY BUT THIS IS NOT A REAL PROJECT!!!
+    price         NUMERIC,
     quantity      INTEGER,
     source_system VARCHAR(255),
     trade_date    DATE
