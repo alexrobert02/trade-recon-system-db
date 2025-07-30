@@ -1,7 +1,5 @@
-package com.onuryilmazer.tradereconsystemdb.controller;
+package com.onuryilmazer.tradereconsystemdb.Instrument;
 
-import com.onuryilmazer.tradereconsystemdb.Instrument.Instrument;
-import com.onuryilmazer.tradereconsystemdb.service.InstrumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
