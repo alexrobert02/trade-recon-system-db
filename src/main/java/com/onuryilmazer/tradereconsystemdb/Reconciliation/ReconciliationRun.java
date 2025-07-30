@@ -2,6 +2,7 @@ package com.onuryilmazer.tradereconsystemdb.Reconciliation;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "reconciliation_run")
@@ -31,6 +32,9 @@ public class ReconciliationRun {
         this.unmatchedCount = 0;
     }
 
+    @OneToMany(mappedBy = "reconciliationRun")
+    private List<ReconciliationDifference> reconciliationDifferences;
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -46,4 +50,12 @@ public class ReconciliationRun {
 
     public Integer getUnmatchedCount() { return unmatchedCount; }
     public void setUnmatchedCount(Integer unmatchedCount) { this.unmatchedCount = unmatchedCount; }
+
+    public List<ReconciliationDifference> getReconciliationDifferences() {
+        return reconciliationDifferences;
+    }
+
+    public void setReconciliationDifferences(List<ReconciliationDifference> reconciliationDifferences) {
+        this.reconciliationDifferences = reconciliationDifferences;
+    }
 }
