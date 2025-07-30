@@ -1,6 +1,6 @@
 package com.onuryilmazer.tradereconsystemdb.Reconciliation;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,7 +25,7 @@ public class ReconciliationDifference {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reconciliation_run_id", nullable = false)
-    @JsonIgnore
+    @JsonBackReference("run-difference")
     private ReconciliationRun reconciliationRun;
 
 

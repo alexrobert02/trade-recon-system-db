@@ -1,7 +1,5 @@
-package com.onuryilmazer.tradereconsystemdb.service;
+package com.onuryilmazer.tradereconsystemdb.Instrument;
 
-import com.onuryilmazer.tradereconsystemdb.Instrument.Instrument;
-import com.onuryilmazer.tradereconsystemdb.repository.InstrumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

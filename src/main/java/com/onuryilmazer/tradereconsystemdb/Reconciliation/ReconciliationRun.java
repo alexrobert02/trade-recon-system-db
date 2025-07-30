@@ -1,5 +1,6 @@
 package com.onuryilmazer.tradereconsystemdb.Reconciliation;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +33,7 @@ public class ReconciliationRun {
         this.unmatchedCount = 0;
     }
 
+    @JsonManagedReference("difference-run")
     @OneToMany(mappedBy = "reconciliationRun")
     private List<ReconciliationDifference> reconciliationDifferences;
 
