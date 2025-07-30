@@ -1,6 +1,7 @@
 package com.onuryilmazer.tradereconsystemdb.Reconciliation;
 
 import com.onuryilmazer.tradereconsystemdb.Trade.Trade;
+import com.onuryilmazer.tradereconsystemdb.Trade.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

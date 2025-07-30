@@ -2,6 +2,7 @@ package com.onuryilmazer.tradereconsystemdb.Trade;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -58,7 +59,7 @@ public class Trade {
     public String getInstrument() { return instrument; }
     public void setInstrument(String instrument) { this.instrument = instrument; }
 
-    public double getPrice() { return price; }
+    public Double getPrice() { return price; }
     public void setPrice(Double price) { this.price = price; }
 
     public Integer getQuantity() { return quantity; }
