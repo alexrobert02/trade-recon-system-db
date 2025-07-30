@@ -15,7 +15,6 @@ public class DemoController {
     }
 
     @GetMapping("/demo/guest")
-    @PreAuthorize("hasRole('GUEST')")
     public String guestAccess() {
         return "You have GUEST access.";
     }
