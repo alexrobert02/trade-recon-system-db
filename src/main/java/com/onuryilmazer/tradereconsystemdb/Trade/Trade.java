@@ -22,7 +22,7 @@ public class Trade {
     private String instrument;
 
 
-    @Column(name = "price", nullable = false, precision = 19, scale = 2)
+    @Column(name = "price", nullable = false)
     private Double price;
 
 
