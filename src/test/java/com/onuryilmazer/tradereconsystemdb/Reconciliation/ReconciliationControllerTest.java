@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.*;
 
@@ -20,11 +21,8 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//using test slices is better for unit testing controllers,
-//but the security configuration causes problems when using @WebMvcTest
-//so I am load the entire spring context for now.
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(controllers = ReconciliationController.class)
+@WithMockUser
 @DisplayName("ReconciliationController Tests")
 class ReconciliationControllerTest {
     @Autowired
