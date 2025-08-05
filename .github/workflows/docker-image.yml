@@ -32,5 +32,4 @@ jobs:
 
       - name: Push Docker Image to Docker Hub
         run: |
-          docker push alexrobert02/trade-recon-system-db:la
-
+          docker push alexrobert02/trade-recon-system-db:latest
